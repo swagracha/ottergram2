@@ -15,6 +15,7 @@ function setDetails(imageURL, titleText) {
 
     var detailTitle = document.querySelector(DETAIL_TITLE_SELECTOR);
     detailTitle.textContent = titleText;
+
 }
 
 function imageFromThumb(thumbnail) {
@@ -68,6 +69,9 @@ function addKeyPressHandler() {
     document.body.addEventListener('keyup', function (event) {
         event.preventDefault();
         console.log(event.keyCode);
+        if (event.keyCode === ESC_KEY) {
+            hideDetails();
+        }
     });
 }
 
@@ -75,6 +79,10 @@ function initializeEvents() {
     'use strict';
     var thumbnails = getThumbnailsArray();
     thumbnails.forEach(addThumbClickHandler);
+    addKeyPressHandler();
 }
+
+
+
 
 initializeEvents();
